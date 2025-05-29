@@ -38,40 +38,40 @@ export default function Home() {
 
       <div className="lg:flex min-h-screen">
         {/* Sidebar Navigation */}
-        <aside className="lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-96 flex flex-col lg:justify-between p-6 lg:p-12 z-10">
-          <div>
+        <aside className="lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-96 flex flex-col p-6 lg:p-12 z-10">
+          <div className="flex-1">
             <header className="mb-6 lg:mb-8">
               <h1 className="text-3xl lg:text-5xl font-bold text-[#bcb6c9] mb-3">
                 <a href="/" className="hover:text-[#6a9fa4] transition-colors">
-                  Dipang Bhadrecha
+                  Brittany Chiang
                 </a>
               </h1>
               <h2 className="text-lg lg:text-xl font-medium text-[#bcb6c9] mb-4">
-                Software Engineer
+                Front End Engineer
               </h2>
-              <p className="text-[#7281a4] text-base lg:text-lg leading-relaxed">
-                I build backend systems.
+              <p className="text-[#7281a4] text-base lg:text-lg leading-relaxed max-w-xs">
+                I build accessible, pixel-perfect digital experiences for the web.
               </p>
             </header>
 
-            <nav className="mb-6 lg:mb-8">
-              <ul className="flex lg:flex-col space-x-6 lg:space-x-0 lg:space-y-3 overflow-x-auto">
+            <nav className="mb-6 lg:mb-8 hidden lg:block">
+              <ul className="space-y-3">
                 {[
                   { id: 'about', label: 'About' },
                   { id: 'experience', label: 'Experience' },
                   { id: 'projects', label: 'Projects' },
-                  //{ id: 'writing', label: 'Writing' }
+                  { id: 'writing', label: 'Writing' }
                 ].map((item) => (
                   <li key={item.id}>
                     <button
                       onClick={() => scrollToSection(item.id)}
-                      className={`group flex items-center text-xs lg:text-sm font-medium tracking-widest uppercase whitespace-nowrap ${
+                      className={`group flex items-center text-sm font-medium tracking-widest uppercase ${
                         activeSection === item.id
                           ? 'text-[#bcb6c9]'
                           : 'text-[#7281a4] hover:text-[#bcb6c9]'
                       } transition-colors`}
                     >
-                      <span className={`h-px mr-2 lg:mr-4 transition-all hidden lg:block ${
+                      <span className={`h-px mr-4 transition-all ${
                         activeSection === item.id
                           ? 'w-16 bg-[#bcb6c9]'
                           : 'w-8 bg-[#7281a4] group-hover:w-16 group-hover:bg-[#bcb6c9]'
@@ -82,10 +82,35 @@ export default function Home() {
                 ))}
               </ul>
             </nav>
+
+            {/* Mobile Navigation */}
+            <nav className="mb-6 lg:hidden">
+              <ul className="flex space-x-6 overflow-x-auto">
+                {[
+                  { id: 'about', label: 'About' },
+                  { id: 'experience', label: 'Experience' },
+                  { id: 'projects', label: 'Projects' },
+                  { id: 'writing', label: 'Writing' }
+                ].map((item) => (
+                  <li key={item.id}>
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className={`text-xs font-medium tracking-widest uppercase whitespace-nowrap ${
+                        activeSection === item.id
+                          ? 'text-[#bcb6c9]'
+                          : 'text-[#7281a4] hover:text-[#bcb6c9]'
+                      } transition-colors`}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
-          {/* Social Links */}
-          <div className="flex space-x-5 justify-center lg:justify-start">
+          {/* Social Links - Positioned at bottom on desktop, center on mobile */}
+          <div className="flex space-x-5 justify-center lg:justify-start mt-auto">
             {[
               { href: 'https://github.com/Dipang-bhadrecha/', icon: 'https://ext.same-assets.com/1599097462/3783633550.svg', label: 'GitHub' },
               { href: 'https://www.linkedin.com/in/dipang/', icon: 'https://ext.same-assets.com/1599097462/2563901416.svg', label: 'LinkedIn' },
@@ -205,62 +230,139 @@ export default function Home() {
               <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">Projects</h2>
               <div className="space-y-12 lg:space-y-16">
 
-                {/* Spotify Course */}
-                <div className="group relative grid lg:grid-cols-[1fr_200px] gap-4 lg:gap-8 items-center">
-                  <div className="order-2">
-                    <img
-                      src="https://ext.same-assets.com/1599097462/849522504.png"
-                      alt="Build a Spotify Connected App Newline course marketing card"
-                      className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
-                    />
-                  </div>
-                  <div className="order-1">
-                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
-                      <a
-                        href="https://www.newline.co/courses/build-a-spotify-connected-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-baseline"
-                      >
-                        Build a Spotify Connected App
-                        <img src="https://ext.same-assets.com/1599097462/1354271685.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </a>
-                    </h3>
-                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Video course that teaches how to build a web app with the Spotify Web API. Topics covered include the principles of REST APIs, user auth flows, Node, Express, React, Styled Components, and more.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Spotify Profile */}
+                {/* evIndia */}
                 <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 items-center">
                   <div>
                     <img
                       src="https://ext.same-assets.com/1599097462/849522504.png"
-                      alt="Spotify Profile app homepage"
+                      alt="evIndia electric vehicle searching company"
                       className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
                     />
                   </div>
                   <div>
                     <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
                       <a
-                        href="https://spotify-profile.herokuapp.com/"
+                        href="https://evindia.online/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-baseline"
                       >
-                        Spotify Profile
+                        evIndia Web
                         <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                       </a>
                     </h3>
                     <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.
+                      Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
                     </p>
                     <div className="mt-2 flex items-center">
-                      <a href="https://github.com/bchiang7/spotify-profile" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs text-[#6a9fa4] hover:text-[#bcb6c9] transition-colors">
-                        <img src="https://ext.same-assets.com/1599097462/1443725800.svg" alt="" className="w-3 h-3 mr-1" />
-                        682
+                    </div>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
+                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* evIndia */}
+                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 items-center">
+                  <div>
+                    <img
+                      src="https://ext.same-assets.com/1599097462/849522504.png"
+                      alt="evIndia electric vehicle searching company"
+                      className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
+                      <a
+                        href="https://evindia.online/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-baseline"
+                      >
+                        evIndia Web
+                        <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                       </a>
+                    </h3>
+                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
+                      Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
+                    </p>
+                    <div className="mt-2 flex items-center">
+                    </div>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
+                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* evIndia */}
+                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 items-center">
+                  <div>
+                    <img
+                      src="https://ext.same-assets.com/1599097462/849522504.png"
+                      alt="evIndia electric vehicle searching company"
+                      className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
+                      <a
+                        href="https://evindia.online/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-baseline"
+                      >
+                        evIndia Web
+                        <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                      </a>
+                    </h3>
+                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
+                      Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
+                    </p>
+                    <div className="mt-2 flex items-center">
+                    </div>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
+                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* evIndia */}
+                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 items-center">
+                  <div>
+                    <img
+                      src="https://ext.same-assets.com/1599097462/849522504.png"
+                      alt="evIndia electric vehicle searching company"
+                      className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
+                      <a
+                        href="https://evindia.online/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-baseline"
+                      >
+                        evIndia Web
+                        <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                      </a>
+                    </h3>
+                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
+                      Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
+                    </p>
+                    <div className="mt-2 flex items-center">
                     </div>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
