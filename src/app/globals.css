@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ✅ Base CSS variables */
 @layer base {
   :root {
     --background: 12 20 44; /* #0c142c */
@@ -27,13 +28,14 @@
     --ring: 106 159 164;
     --radius: 0.5rem;
   }
+
+  .social-icons {
+  position: absolute;
+  bottom: 0;
+  left: 40px; /* or whatever matches your sidebar shift */
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
+  
   html {
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
@@ -41,8 +43,8 @@
 
   body {
     @apply bg-background text-foreground font-normal;
-    background-color: rgb(12 20 44);
-    color: rgb(188 182 201);
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -50,36 +52,32 @@
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* ✅ Define custom utility for border-border */
+@layer utilities {
+  .border-border {
+    border-color: rgb(var(--border));
+  }
+
+  .bg-background {
+    background-color: rgb(var(--background));
+  }
+
+  .text-foreground {
+    color: rgb(var(--foreground));
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: rgb(29 54 64);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(50 55 82);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(114 129 164);
-}
-
-/* Smooth transitions */
+/* ✅ General styles */
 * {
   transition: all 0.2s ease-in-out;
 }
 
-/* Skip to content link */
 .skip-link {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: rgb(106 159 164);
-  color: rgb(12 20 44);
+  background: rgb(var(--primary));
+  color: rgb(var(--primary-foreground));
   padding: 8px;
   text-decoration: none;
   border-radius: 4px;
@@ -88,4 +86,22 @@
 
 .skip-link:focus {
   top: 6px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--muted-foreground));
 }

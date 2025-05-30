@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('about');
@@ -41,18 +42,22 @@ export default function Home() {
         <aside className="lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-96 flex flex-col p-6 lg:p-12 z-10">
           <div className="flex-1">
             <header className="mb-6 lg:mb-8">
-              <h1 className="text-3xl lg:text-5xl font-bold text-[#bcb6c9] mb-3">
+                <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
                 <a href="/" className="hover:text-[#6a9fa4] transition-colors">
-                  Brittany Chiang
-                </a>
+                  Dipang Bhadrecha
+                </a> 
               </h1>
-              <h2 className="text-lg lg:text-xl font-medium text-[#bcb6c9] mb-4">
-                Front End Engineer
-              </h2>
-              <p className="text-[#7281a4] text-base lg:text-lg leading-relaxed max-w-xs">
-                I build accessible, pixel-perfect digital experiences for the web.
-              </p>
+              <br />
+              <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+                Software Engineer
+              </h2> <br />
+              {/* <p className="text-[#7281a4] text-base lg:text-lg leading-relaxed max-w-xs">
+                I build <b className="text-lg lg:text-xl font-medium text-[#bcb6c9] mb-4">backend</b> systems and UI. Currently mastering DSA and System Design for advanced software engineering roles.
+              </p><br /> */}
+              <p className="mt-4 max-w-xs leading-normal">I build backend systems and UI. Currently mastering DSA and System Design for advanced software engineering roles.</p>
             </header>
+            <br />
+            <br />
 
             <nav className="mb-6 lg:mb-8 hidden lg:block">
               <ul className="space-y-3">
@@ -60,7 +65,7 @@ export default function Home() {
                   { id: 'about', label: 'About' },
                   { id: 'experience', label: 'Experience' },
                   { id: 'projects', label: 'Projects' },
-                  { id: 'writing', label: 'Writing' }
+                  //{ id: 'writing', label: 'Writing' }
                 ].map((item) => (
                   <li key={item.id}>
                     <button
@@ -110,20 +115,20 @@ export default function Home() {
           </div>
 
           {/* Social Links - Positioned at bottom on desktop, center on mobile */}
-          <div className="flex space-x-5 justify-center lg:justify-start mt-auto">
+          <div className="flex space-x-5 justify-center lg:justify-start mt-auto text-white">
             {[
-              { href: 'https://github.com/Dipang-bhadrecha/', icon: 'https://ext.same-assets.com/1599097462/3783633550.svg', label: 'GitHub' },
-              { href: 'https://www.linkedin.com/in/dipang/', icon: 'https://ext.same-assets.com/1599097462/2563901416.svg', label: 'LinkedIn' },
+              { href: 'https://github.com/Dipang-bhadrecha/', icon: <FaGithub />, label: 'GitHub' },
+              { href: 'https://www.linkedin.com/in/dipang/', icon: <FaLinkedin />, label: 'LinkedIn' },
             ].map((social) => (
               <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7281a4] hover:text-[#6a9fa4] hover:-translate-y-1 transition-all"
-                aria-label={social.label}
+                 key={social.label}
+                 href={social.href}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="hover:text-gray-300 hover:-translate-y-1 transition-all"
+                 aria-label={social.label}
               >
-                <img src={social.icon} alt={social.label} className="w-6 h-6" />
+                 <span className="text-white text-3xl">{social.icon}</span>
               </a>
             ))}
           </div>
