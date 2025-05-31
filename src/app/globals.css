@@ -1,3 +1,4 @@
+/* globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -29,13 +30,6 @@
     --radius: 0.5rem;
   }
 
-  .social-icons {
-  position: absolute;
-  bottom: 0;
-  left: 40px; /* or whatever matches your sidebar shift */
-}
-
-  
   html {
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
@@ -49,6 +43,57 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* Added nav-indicator and nav-text for specific styling like Brittany Chiang's site */
+  .nav-indicator {
+    @apply mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none;
+  }
+  .nav-text {
+    @apply text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200;
+  }
+  
+
+  .section {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-narrow {
+    @apply max-w-2xl mx-auto px-4 sm:px-6;
+  }
+
+  .grid-cols-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
+  }
+
+  .heading-xl {
+    @apply text-4xl font-extrabold leading-tight tracking-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl font-bold leading-snug tracking-tight;
+  }
+
+  .heading-md {
+    @apply text-2xl font-semibold leading-snug;
+  }
+
+  .heading-sm {
+    @apply text-xl font-medium leading-snug;
+  }
+
+  .body-base {
+    @apply text-base font-normal leading-relaxed text-foreground;
+  }
+
+  .body-muted {
+    @apply text-sm font-normal text-muted-foreground;
+  }
+
+  .caption {
+    @apply text-xs font-medium text-muted-foreground uppercase tracking-wide;
   }
 }
 

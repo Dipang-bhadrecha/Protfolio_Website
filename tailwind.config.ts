@@ -1,3 +1,4 @@
+// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 export default {
@@ -75,5 +76,30 @@ export default {
       },
     }
   },
+
+  colors: {
+  primary: {
+    DEFAULT: 'hsl(var(--primary))',
+    foreground: 'hsl(var(--primary-foreground))',
+  },
+
+  brand: {
+    DEFAULT: 'hsl(var(--primary))',
+    subtle: 'hsl(var(--muted))',
+    border: 'hsl(var(--border))',
+  },
+
+  text: {
+    base: 'hsl(var(--foreground))',
+    muted: 'hsl(var(--muted-foreground))',
+  },
+
+  background: {
+    base: 'hsl(var(--background))',
+    card: 'hsl(var(--card))',
+    surface: 'hsl(var(--popover))',
+  },
+  },
+
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

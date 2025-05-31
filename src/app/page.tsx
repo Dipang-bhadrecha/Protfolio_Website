@@ -1,3 +1,4 @@
+// Home.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -32,57 +33,48 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0c142c] text-[#bcb6c9]">
+    // Outer-most container: Controls overall max-width and responsive padding from screen edges
+    <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0 bg-[#0c142c] text-[#bcb6c9]">
       <a href="#content" className="skip-link">
         Skip to Content
       </a>
 
-      <div className="lg:flex min-h-screen">
-        {/* Sidebar Navigation */}
-        <aside className="lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-96 flex flex-col p-6 lg:p-12 z-10">
-          <div className="flex-1">
-            <header className="mb-6 lg:mb-8">
-                <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
-                <a href="/" className="hover:text-[#6a9fa4] transition-colors">
+      {/* Main layout container for large screens: Flex split between sidebar and main content */}
+      <div className="lg:flex lg:justify-between lg:gap-4">
+        {/* Sidebar Navigation - Fixed on large screens, takes half width */}
+        <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+          <div>
+            {/* Removed lg:px-24 from this div. Content will now align to the left within its half-width column */}
+            <div>
+              <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+                <a href="/" className="hover:text-[#6a9fa4] transition-colors whitespace-nowrap">
                   Dipang Bhadrecha
-                </a> 
+                </a>
               </h1>
-              <br />
               <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
                 Software Engineer
-              </h2> <br />
-              {/* <p className="text-[#7281a4] text-base lg:text-lg leading-relaxed max-w-xs">
-                I build <b className="text-lg lg:text-xl font-medium text-[#bcb6c9] mb-4">backend</b> systems and UI. Currently mastering DSA and System Design for advanced software engineering roles.
-              </p><br /> */}
+              </h2>
               <p className="mt-4 max-w-xs leading-normal">I build backend systems and UI. Currently mastering DSA and System Design for advanced software engineering roles.</p>
-            </header>
-            <br />
-            <br />
+            </div>
 
-            <nav className="mb-6 lg:mb-8 hidden lg:block">
-              <ul className="space-y-3">
+            {/* Desktop Navigation */}
+            <nav className="nav hidden lg:block" aria-label="In-page jump links">
+              <ul className="mt-16 w-max"> {/* Exactly like Brittany's: mt-16 and w-max */}
                 {[
                   { id: 'about', label: 'About' },
                   { id: 'experience', label: 'Experience' },
                   { id: 'projects', label: 'Projects' },
-                  //{ id: 'writing', label: 'Writing' }
                 ].map((item) => (
-                  <li key={item.id}>
-                    <button
-                      onClick={() => scrollToSection(item.id)}
-                      className={`group flex items-center text-sm font-medium tracking-widest uppercase ${
-                        activeSection === item.id
-                          ? 'text-[#bcb6c9]'
-                          : 'text-[#7281a4] hover:text-[#bcb6c9]'
-                      } transition-colors`}
+                  <li key={item.id} key={item.id}>
+                    <a
+                      href={`#${item.id}`} // Use href for actual link
+                      onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }} // Keep smooth scroll
+                      className={`group flex items-center py-3 ${activeSection === item.id ? 'active' : ''}`}
                     >
-                      <span className={`h-px mr-4 transition-all ${
-                        activeSection === item.id
-                          ? 'w-16 bg-[#bcb6c9]'
-                          : 'w-8 bg-[#7281a4] group-hover:w-16 group-hover:bg-[#bcb6c9]'
-                      }`} />
-                      {item.label}
-                    </button>
+                      {/* Nav indicator and text styles are now in globals.css for reusability */}
+                      <span className="nav-indicator"></span>
+                      <span className="nav-text">{item.label}</span>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -90,12 +82,11 @@ export default function Home() {
 
             {/* Mobile Navigation */}
             <nav className="mb-6 lg:hidden">
-              <ul className="flex space-x-6 overflow-x-auto">
+              <ul className="flex space-x-10 overflow-x-auto p-4 sm:p-6 md:p-8 lg:p-0"> {/* Adjusted for mobile padding */}
                 {[
                   { id: 'about', label: 'About' },
                   { id: 'experience', label: 'Experience' },
                   { id: 'projects', label: 'Projects' },
-                  { id: 'writing', label: 'Writing' }
                 ].map((item) => (
                   <li key={item.id}>
                     <button
@@ -115,32 +106,33 @@ export default function Home() {
           </div>
 
           {/* Social Links - Positioned at bottom on desktop, center on mobile */}
-          <div className="flex space-x-5 justify-center lg:justify-start mt-auto text-white">
+          {/* Removed lg:px-24 from this ul. Social icons will now align to the left within its half-width column */}
+          <ul className="flex space-x-5 justify-center lg:justify-start mt-auto text-white">
             {[
               { href: 'https://github.com/Dipang-bhadrecha/', icon: <FaGithub />, label: 'GitHub' },
               { href: 'https://www.linkedin.com/in/dipang/', icon: <FaLinkedin />, label: 'LinkedIn' },
             ].map((social) => (
-              <a
-                 key={social.label}
-                 href={social.href}
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="hover:text-gray-300 hover:-translate-y-1 transition-all"
-                 aria-label={social.label}
-              >
-                 <span className="text-white text-3xl">{social.icon}</span>
-              </a>
+              <li key={social.label}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 hover:-translate-y-1 transition-all"
+                  aria-label={social.label}
+                >
+                  <span className="text-white text-3xl">{social.icon}</span>
+                </a>
+              </li>
             ))}
-          </div>
-        </aside>
+          </ul>
+        </header>
 
-        {/* Main Content */}
-        <main id="content" className="lg:ml-96 flex-1">
-          <div className="max-w-2xl mx-auto py-12 lg:py-24 px-6 lg:px-12">
+        {/* Main Content Area - Takes remaining half width */}
+        <main id="content" className="pt-24 lg:w-1/2 lg:py-24">
+          <div className="max-w-2xl mx-auto"> {/* This div limits the actual content width, mimicking Brittany's site */}
 
             {/* About Section */}
             <section id="about" className="mb-16 lg:mb-24">
-              <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">About</h2>
               <div className="space-y-4 text-[#7281a4] leading-relaxed">
                 <p>
                   I'm a developer passionate about building scalable backend systems and intuitive user experiences that solve real-world problems. I enjoy working at the crossroads of technology and impact, crafting solutions that are both technically sound and deeply aligned with user needs.
@@ -159,23 +151,28 @@ export default function Home() {
               <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">Experience</h2>
               <div className="space-y-12">
                 {/* Freelance Developer */}
-                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 pb-1 transition-all hover:bg-[#1a2332] hover:shadow-lg hover:drop-shadow-lg rounded-lg p-4 hover:-translate-y-1">
+                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 pb-1 transition-all hover:bg-[#1a2332] hover:shadow-lg hover:drop-shadow-lg rounded-lg p-4 hover:-translate-y-1">
                   <div className="text-xs font-semibold uppercase tracking-wide text-[#7281a4] mt-1">
                     2024 — Present
                   </div>
                   <div>
                     <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
                       <a
+                        href="https://www.ahuratechnosoft.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1"
                       >
-                        Feelance Developer
-                        <img src="https://ext.same-assets.com/1599097462/2320907649.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                        Ahura Technosoft
+                        <img src="https://ext.same-assets.com/1599097462/2320907649.svg" alt="" className="w-3 h-3 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                       </a>
                     </h3>
+
                     <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Develop and maintain backend systems for Seafreshh, Gujarat’s first marine marketplace, using Node.js and MongoDB, while designing mobile-first user interfaces in Figma to ensure a smooth and accessible experience. Map and optimize client operations using tools like Miro, offering process improvements grounded in fisheries industry insights. Additionally, contribute to various backend features on a contract or referral basis, collaborating with peers and clients to implement scalable solutions,and real-time functionality, helping accelerate development timelines and deliver robust backend support for evolving project needs.
+                      Develop and maintain backend systems for Seafreshh, Gujarat’s first marine marketplace, using Node.js and MongoDB, while designing mobile-first user interfaces in Figma to ensure a smooth and accessible experience. Map and optimize client operations using tools like Miro, offering process improvements grounded in fisheries industry insights. Additionally, contribute to various backend features on a contract or referral basis, collaborating with peers and clients to implement scalable solutions, and real-time functionality, helping accelerate development timelines and deliver robust backend support for evolving project needs.
                     </p>
                     <ul className="mt-3 flex flex-wrap gap-2">
-                      {['JavaScript', 'TypeScript', 'Nodejs', 'AWS', 'Figma', 'Api development', 'backend Developement'].map((tech) => (
+                      {['JavaScript', 'TypeScript', 'Nodejs', 'AWS', 'Figma', 'Api development', 'Backend Developement'].map((tech) => (
                         <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
                           {tech}
                         </li>
@@ -185,7 +182,7 @@ export default function Home() {
                 </div>
 
                 {/* Ahura Technosoft */}
-                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 pb-1 transition-all hover:bg-[#1a2332] hover:shadow-lg hover:drop-shadow-lg rounded-lg p-4 hover:-translate-y-1">
+                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 pb-1 transition-all hover:bg-[#1a2332] hover:shadow-lg hover:drop-shadow-lg rounded-lg p-4 hover:-translate-y-1">
                   <div className="text-xs font-semibold uppercase tracking-wide text-[#7281a4] mt-1">
                     2018 — 2024
                   </div>
@@ -202,7 +199,7 @@ export default function Home() {
                       </a>
                     </h3>
                     <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Maintained and enhanced the backend for Evindia’s, an EV-focused platform; improved scalability and database efficiency on AWS EC2.eveloped real-time multiplayer backend features for a card game using Node.js and Socket.IO.Built REST APIs for Quotastic, a free quotation platform, handling user data, authentication, and content management.
+                      Maintained and enhanced the backend for Evindia’s, an EV-focused platform; improved scalability and database efficiency on AWS EC2. Developed real-time multiplayer backend features for a card game using Node.js and Socket.IO. Built REST APIs for Quotastic, a free quotation platform, handling user data, authentication, and content management.
                     </p>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {['JavaScript', 'TypeScript', 'HTML & SCSS', 'React', 'Next.js', 'React Native', 'WordPress', 'Contentful', 'Node.js', 'PHP'].map((tech) => (
@@ -235,8 +232,8 @@ export default function Home() {
               <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">Projects</h2>
               <div className="space-y-12 lg:space-y-16">
 
-                {/* evIndia */}
-                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 items-center">
+                {/* Project 1 */}
+                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 items-center">
                   <div>
                     <img
                       src="https://ext.same-assets.com/1599097462/849522504.png"
@@ -271,34 +268,34 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* evIndia */}
-                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 items-center">
+                {/* Project 2 - Placeholder, replace with real data */}
+                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 items-center">
                   <div>
                     <img
-                      src="https://ext.same-assets.com/1599097462/849522504.png"
-                      alt="evIndia electric vehicle searching company"
+                      src="https://ext.same-assets.com/1599097462/849522504.png" // Replace with actual image
+                      alt="Placeholder Project 2"
                       className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
                     />
                   </div>
                   <div>
                     <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
                       <a
-                        href="https://evindia.online/"
+                        href="#" // Replace with actual project URL
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-baseline"
                       >
-                        evIndia Web
+                        Placeholder Project Two
                         <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                       </a>
                     </h3>
                     <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
+                      This is a placeholder description for your second project. Update this with details about the project's purpose, technologies, and your contributions.
                     </p>
                     <div className="mt-2 flex items-center">
                     </div>
                     <ul className="mt-3 flex flex-wrap gap-2">
-                      {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
+                      {['Next.js', 'Tailwind CSS', 'Firebase', 'Stripe'].map((tech) => ( // Example tech stack
                         <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
                           {tech}
                         </li>
@@ -307,70 +304,34 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* evIndia */}
-                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 items-center">
+                {/* Project 3 - Placeholder, replace with real data */}
+                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 items-center">
                   <div>
                     <img
-                      src="https://ext.same-assets.com/1599097462/849522504.png"
-                      alt="evIndia electric vehicle searching company"
+                      src="https://ext.same-assets.com/1599097462/849522504.png" // Replace with actual image
+                      alt="Placeholder Project 3"
                       className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
                     />
                   </div>
                   <div>
                     <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
                       <a
-                        href="https://evindia.online/"
+                        href="#" // Replace with actual project URL
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-baseline"
                       >
-                        evIndia Web
+                        Placeholder Project Three
                         <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                       </a>
                     </h3>
                     <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
+                      Description for your third project. Detail the problem it solves, the technologies used, and your role.
                     </p>
                     <div className="mt-2 flex items-center">
                     </div>
                     <ul className="mt-3 flex flex-wrap gap-2">
-                      {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
-                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* evIndia */}
-                <div className="group relative grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-8 items-center">
-                  <div>
-                    <img
-                      src="https://ext.same-assets.com/1599097462/849522504.png"
-                      alt="evIndia electric vehicle searching company"
-                      className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
-                      <a
-                        href="https://evindia.online/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-baseline"
-                      >
-                        evIndia Web
-                        <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </a>
-                    </h3>
-                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
-                    </p>
-                    <div className="mt-2 flex items-center">
-                    </div>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
+                      {['Python', 'Django', 'PostgreSQL', 'Docker'].map((tech) => ( // Example tech stack
                         <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
                           {tech}
                         </li>
@@ -386,14 +347,14 @@ export default function Home() {
         </main>
       </div>
 
-      {/* Korok Image */}
-      <div className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 opacity-60 hover:opacity-100 transition-opacity z-10">
+      {/* Optional Korok Image (if you want to include it) */}
+      {/* <div className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 opacity-60 hover:opacity-100 transition-opacity z-10">
         <img
           src="https://ext.same-assets.com/1599097462/2248006837.png"
           alt="Korok character"
           className="w-12 h-12 lg:w-16 lg:h-16"
         />
-      </div>
+      </div> */}
     </div>
   );
 }
