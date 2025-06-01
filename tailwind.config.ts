@@ -10,7 +10,27 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
+      animation: {
+        'cursor': 'cursorAnim 0.5s infinite',
+        'cursor2': 'cursorAnim2 0.5s infinite',
+        'cursor3': 'cursorAnim3 0.5s infinite',
+      },
+      keyframes: {
+        cursorAnim: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(0.7)' },
+        },
+        cursorAnim2: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(0.5)' },
+        },
+        cursorAnim3: {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(3)', opacity: '0' },
+        },
+      },
+      // All these properties should be directly under `extend` or `theme`
+      colors: { // Moved colors outside of keyframes
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -52,53 +72,33 @@ export default {
           '5': 'hsl(var(--chart-5))'
         }
       },
-      borderRadius: {
+      borderRadius: { 
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
       },
-      container: {
-      center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+      container: { 
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '6rem',
+        },
+        screens: { 
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1280px',
+          '2xl': '1536px',
+        },
       },
-      screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
+      
+      maxWidth: {
+        '548px': '548.59px', 
       },
-      },
-    }
-  },
-
-  colors: {
-  primary: {
-    DEFAULT: 'hsl(var(--primary))',
-    foreground: 'hsl(var(--primary-foreground))',
-  },
-
-  brand: {
-    DEFAULT: 'hsl(var(--primary))',
-    subtle: 'hsl(var(--muted))',
-    border: 'hsl(var(--border))',
-  },
-
-  text: {
-    base: 'hsl(var(--foreground))',
-    muted: 'hsl(var(--muted-foreground))',
-  },
-
-  background: {
-    base: 'hsl(var(--background))',
-    card: 'hsl(var(--card))',
-    surface: 'hsl(var(--popover))',
-  },
+    },
   },
 
   plugins: [require("tailwindcss-animate")],

@@ -19,9 +19,8 @@ export default function Home() {
       { threshold: 0.3 }
     );
 
-    for (const section of document.querySelectorAll('section[id]')) {
-      observer.observe(section);
-    }
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach(section => observer.observe(section));
 
     return () => observer.disconnect();
   }, []);
@@ -31,20 +30,20 @@ export default function Home() {
       behavior: 'smooth'
     });
   };
+  
 
   return (
     // Outer-most container: Controls overall max-width and responsive padding from screen edges
-    <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0 bg-[#0c142c] text-[#bcb6c9]">
-      <a href="#content" className="skip-link">
+        <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-16 lg:py-0"> 
+      <a href="#content" className="absolute left-0 top-0 block -translate-x-full rounded bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 px-4 py-3 text-sm font-bold uppercase tracking-widest text-white focus-visible:translate-x-0">
         Skip to Content
       </a>
 
       {/* Main layout container for large screens: Flex split between sidebar and main content */}
       <div className="lg:flex lg:justify-between lg:gap-4">
         {/* Sidebar Navigation - Fixed on large screens, takes half width */}
-        <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+        <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
           <div>
-            {/* Removed lg:px-24 from this div. Content will now align to the left within its half-width column */}
             <div>
               <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
                 <a href="/" className="hover:text-[#6a9fa4] transition-colors whitespace-nowrap">
@@ -59,7 +58,7 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <nav className="nav hidden lg:block" aria-label="In-page jump links">
-              <ul className="mt-16 w-max"> {/* Exactly like Brittany's: mt-16 and w-max */}
+              <ul className="mt-16 w-max"> 
                 {[
                   { id: 'about', label: 'About' },
                   { id: 'experience', label: 'Experience' },
@@ -73,7 +72,8 @@ export default function Home() {
                     >
                       {/* Nav indicator and text styles are now in globals.css for reusability */}
                       <span className="nav-indicator"></span>
-                      <span className="nav-text">{item.label}</span>
+                      <span className="nav-text">{item.label}
+                      </span>
                     </a>
                   </li>
                 ))}
@@ -106,7 +106,6 @@ export default function Home() {
           </div>
 
           {/* Social Links - Positioned at bottom on desktop, center on mobile */}
-          {/* Removed lg:px-24 from this ul. Social icons will now align to the left within its half-width column */}
           <ul className="flex space-x-5 justify-center lg:justify-start mt-auto text-white">
             {[
               { href: 'https://github.com/Dipang-bhadrecha/', icon: <FaGithub />, label: 'GitHub' },
@@ -128,218 +127,468 @@ export default function Home() {
         </header>
 
         {/* Main Content Area - Takes remaining half width */}
-        <main id="content" className="pt-24 lg:w-1/2 lg:py-24">
-          <div className="max-w-2xl mx-auto"> {/* This div limits the actual content width, mimicking Brittany's site */}
+        <main id="content" className="pt-24 lg:w-[52%] lg:py-24">
+          <div className=" max-w-6xl mx-auto "> {/* This div limits the actual content width */}
 
             {/* About Section */}
-            <section id="about" className="mb-16 lg:mb-24">
-              <div className="space-y-4 text-[#7281a4] leading-relaxed">
+            <section id="about" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="About me">
+              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">About</h2>
+              </div>
+              <div className="text-body">
                 <p>
-                  I'm a developer passionate about building scalable backend systems and intuitive user experiences that solve real-world problems. I enjoy working at the crossroads of technology and impact, crafting solutions that are both technically sound and deeply aligned with user needs.
+                  I'm a developer passionate about crafting accessible, pixel-perfect user interfaces that blend thoughtful design with robust engineering. My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.
                 </p>
                 <p>
-                  I’m currently focused on sharpening my problem-solving abilities through Data Structures and Algorithms to prepare for challenging software engineering roles. In parallel, I’m deepening my understanding of system design and architecture to align with the evolving demands of the AI and ML-driven tech landscape. My goal is to grow continuously, embrace new responsibilities, and contribute to innovative, forward-thinking teams while expanding my technical expertise.
+                  Currently, I'm a Software Engineer at{' '}
+                  <a href="https://www.ahuratechnosoft.com/" target="_blank" rel="noreferrer noopener">
+                    Ahura Technosoft
+                  </a>, specializing in backend development. I contribute to the creation and maintenance of systems that power web applications, ensuring our platform meets performance standards and best practices to deliver an excellent user experience.
                 </p>
                 <p>
-                  In my spare time, I enjoy exploring random ideas at my desk, going on unplanned weekend hikes with friends, and wandering the city in search of a good espresso and a quiet café corner.
+                  In the past, I've had the opportunity to develop software across a variety of settings — from{' '}
+                  <a href="https://evindia.online/" target="_blank" rel="noreferrer noopener">
+                    EV India
+                  </a>{' '}
+                  to{' '}
+                  <a href="https://quotastic.in/" target="_blank" rel="noreferrer noopener">
+                    Quotastic
+                  </a>.
                 </p>
               </div>
             </section>
 
             {/* Experience Section */}
-            <section id="experience" className="mb-16 lg:mb-24">
-              <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">Experience</h2>
-              <div className="space-y-12">
-                {/* Freelance Developer */}
-                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 pb-1 transition-all hover:bg-[#1a2332] hover:shadow-lg hover:drop-shadow-lg rounded-lg p-4 hover:-translate-y-1">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-[#7281a4] mt-1">
-                    2024 — Present
-                  </div>
-                  <div>
-                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
-                      <a
-                        href="https://www.ahuratechnosoft.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1"
-                      >
-                        Ahura Technosoft
-                        <img src="https://ext.same-assets.com/1599097462/2320907649.svg" alt="" className="w-3 h-3 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </a>
-                    </h3>
+            <section id="experience" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Work experience">
+                <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">Experience</h2>
+                <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                </div>
 
-                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Develop and maintain backend systems for Seafreshh, Gujarat’s first marine marketplace, using Node.js and MongoDB, while designing mobile-first user interfaces in Figma to ensure a smooth and accessible experience. Map and optimize client operations using tools like Miro, offering process improvements grounded in fisheries industry insights. Additionally, contribute to various backend features on a contract or referral basis, collaborating with peers and clients to implement scalable solutions, and real-time functionality, helping accelerate development timelines and deliver robust backend support for evolving project needs.
-                    </p>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {['JavaScript', 'TypeScript', 'Nodejs', 'AWS', 'Figma', 'Api development', 'Backend Developement'].map((tech) => (
-                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
+                
+                <div>
+                  <ol className="group/list">
+
+                    {/* Freelance Work */}
+                    <li className="mb-12">
+                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="2024 to Present">
+                          2024 — Present
+                        </header>
+                        <div className="z-10 sm:col-span-6">
+                          <h3 className="font-medium leading-snug text-slate-200">
+                            <div>
+                              <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.ahuratechnosoft.com/" target="_blank" rel="noreferrer noopener" aria-label="Software Engineer at Ahura Technosoft (opens in a new tab)">
+                                <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                                <span>
+                                  Software Engineer ·{' '}
+                                  <span className="inline-block">
+                                    Ahura Technosoft
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                      <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                                    </svg>
+                                  </span>
+                                </span>
+                              </a>
+                            </div>
+                          </h3>
+                          <p className="mt-2 text-sm leading-normal">
+                            Build and maintain critical components used to construct web applications. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web development.
+                          </p>
+                          <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                            {['JavaScript', 'TypeScript', 'Node.js', 'React'].map((tech) => (
+                              <li key={tech} className="mr-1.5 mt-2">
+                                <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                  {tech}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+
+                    {/* Ahura Technosoft */}
+                    <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="2024 to Present">
+                          2024 — Present
+                        </header>
+                        <div className="z-10 sm:col-span-6">
+                          <h3 className="font-medium leading-snug text-slate-200">
+                            <div>
+                              <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.ahuratechnosoft.com/" target="_blank" rel="noreferrer noopener" aria-label="Software Engineer at Ahura Technosoft (opens in a new tab)">
+                                <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                                <span>
+                                  Software Engineer ·{' '}
+                                  <span className="inline-block">
+                                    Ahura Technosoft
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                      <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                                    </svg>
+                                  </span>
+                                </span>
+                              </a>
+                            </div>
+                          </h3>
+                          <p className="mt-2 text-sm leading-normal">
+                            Build and maintain critical components used to construct web applications. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web development.
+                          </p>
+                          <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                            {['JavaScript', 'TypeScript', 'Node.js', 'React'].map((tech) => (
+                              <li key={tech} className="mr-1.5 mt-2">
+                                <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                  {tech}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+
+                    {/* Bytes Technolabs */}
+                    <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="2024 to Present">
+                          2024 — Present
+                        </header>
+                        <div className="z-10 sm:col-span-6">
+                          <h3 className="font-medium leading-snug text-slate-200">
+                            <div>
+                              <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.ahuratechnosoft.com/" target="_blank" rel="noreferrer noopener" aria-label="Software Engineer at Ahura Technosoft (opens in a new tab)">
+                                <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                                <span>
+                                  Software Engineer ·{' '}
+                                  <span className="inline-block">
+                                    Ahura Technosoft
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                      <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                                    </svg>
+                                  </span>
+                                </span>
+                              </a>
+                            </div>
+                          </h3>
+                          <p className="mt-2 text-sm leading-normal">
+                            Build and maintain critical components used to construct web applications. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web development.
+                          </p>
+                          <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                            {['JavaScript', 'TypeScript', 'Node.js', 'React'].map((tech) => (
+                              <li key={tech} className="mr-1.5 mt-2">
+                                <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                  {tech}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+
+                    {/* Rushkar Technology pvt. ltd */}
+                    <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="2024 to Present">
+                          2024 — Present
+                        </header>
+                        <div className="z-10 sm:col-span-6">
+                          <h3 className="font-medium leading-snug text-slate-200">
+                            <div>
+                              <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.ahuratechnosoft.com/" target="_blank" rel="noreferrer noopener" aria-label="Software Engineer at Ahura Technosoft (opens in a new tab)">
+                                <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                                <span>
+                                  Software Engineer ·{' '}
+                                  <span className="inline-block">
+                                    Ahura Technosoft
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                      <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                                    </svg>
+                                  </span>
+                                </span>
+                              </a>
+                            </div>
+                          </h3>
+                          <p className="mt-2 text-sm leading-normal">
+                            Build and maintain critical components used to construct web applications. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web development.
+                          </p>
+                          <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                            {['JavaScript', 'TypeScript', 'Node.js', 'React'].map((tech) => (
+                              <li key={tech} className="mr-1.5 mt-2">
+                                <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                  {tech}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                      
+                  </ol>
+                  <div className="mt-12">
+
+                    {/* Resume link */}
+                    <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 font-semibold text-slate-200 group/link text-base" href="/resume.pdf" target="_blank" rel="noreferrer noopener" aria-label="View Full Résumé (opens in a new tab)">
+                      <span>
+                        View Full{' '}
+                        <span className="inline-block">
+                          Résumé
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                            <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                          </svg>
+                        </span>
+                      </span>
+                    </a>
+
                   </div>
                 </div>
 
-                {/* Ahura Technosoft */}
-                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 pb-1 transition-all hover:bg-[#1a2332] hover:shadow-lg hover:drop-shadow-lg rounded-lg p-4 hover:-translate-y-1">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-[#7281a4] mt-1">
-                    2018 — 2024
-                  </div>
-                  <div>
-                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
-                      <a
-                        href="https://ahuratechnosoft.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-baseline"
-                      >
-                        Software Engineer · Ahura technosoft
-                        <img src="https://ext.same-assets.com/1599097462/1998606599.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </a>
-                    </h3>
-                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Maintained and enhanced the backend for Evindia’s, an EV-focused platform; improved scalability and database efficiency on AWS EC2. Developed real-time multiplayer backend features for a card game using Node.js and Socket.IO. Built REST APIs for Quotastic, a free quotation platform, handling user data, authentication, and content management.
-                    </p>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {['JavaScript', 'TypeScript', 'HTML & SCSS', 'React', 'Next.js', 'React Native', 'WordPress', 'Contentful', 'Node.js', 'PHP'].map((tech) => (
-                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Resume Link */}
-                <div className="mt-12">
-                  <a
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-base font-semibold leading-tight text-[#bcb6c9] hover:text-[#6a9fa4] transition-colors group"
-                  >
-                    View Full Résumé
-                    <img src="https://ext.same-assets.com/1599097462/1743763944.svg" alt="" className="w-4 h-4 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                  </a>
-                </div>
-
-              </div>
-            </section>
+                
+              </section>
 
             {/* Projects Section */}
-            <section id="projects" className="mb-16 lg:mb-24">
-              <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">Projects</h2>
-              <div className="space-y-12 lg:space-y-16">
+            <section id="projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Selected projects">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">Projects</h2>
+            <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+            </div>
 
-                {/* Project 1 */}
-                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 items-center">
-                  <div>
-                    <img
-                      src="https://ext.same-assets.com/1599097462/849522504.png"
-                      alt="evIndia electric vehicle searching company"
-                      className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
-                      <a
-                        href="https://evindia.online/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-baseline"
-                      >
-                        evIndia Web
-                        <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </a>
-                    </h3>
-                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
-                    </p>
-                    <div className="mt-2 flex items-center">
+            <div>
+            <ul className="group/list">
+
+                  {/* Project 1 */}
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      
+                      {/* Image column */}
+                      <div className="z-10 mb-2 mt-1 sm:col-span-2">
+                        <img
+                          src="https://ext.same-assets.com/1599097462/849522504.png"
+                          alt="evIndia electric vehicle searching company"
+                          className="rounded border-2 border-slate-200/10 transition-all group-hover:border-teal-300/30 group-hover:-translate-y-1 w-full"
+                        />
+                      </div>
+                      
+                      {/* Content column */}
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <div>
+                            <a 
+                              className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" 
+                              href="https://evindia.online/" 
+                              target="_blank" 
+                              rel="noreferrer noopener" 
+                              aria-label="evIndia Web (opens in a new tab)"
+                            >
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>
+                                evIndia Web
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                  <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                                </svg>
+                              </span>
+                            </a>
+                          </div>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal text-slate-400">
+                          Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
+                        </p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
+                            <li key={tech} className="mr-1.5 mt-2">
+                              <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                {tech}
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
-                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                  </li>
 
-                {/* Project 2 - Placeholder, replace with real data */}
-                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 items-center">
-                  <div>
-                    <img
-                      src="https://ext.same-assets.com/1599097462/849522504.png" // Replace with actual image
-                      alt="Placeholder Project 2"
-                      className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
-                      <a
-                        href="#" // Replace with actual project URL
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-baseline"
-                      >
-                        Placeholder Project Two
-                        <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </a>
-                    </h3>
-                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      This is a placeholder description for your second project. Update this with details about the project's purpose, technologies, and your contributions.
-                    </p>
-                    <div className="mt-2 flex items-center">
+                  {/* Project 2 */}
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      
+                      {/* Image column */}
+                      <div className="z-10 mb-2 mt-1 sm:col-span-2">
+                        <img
+                          src="https://ext.same-assets.com/1599097462/849522504.png"
+                          alt="evIndia electric vehicle searching company"
+                          className="rounded border-2 border-slate-200/10 transition-all group-hover:border-teal-300/30 group-hover:-translate-y-1 w-full"
+                        />
+                      </div>
+                      
+                      {/* Content column */}
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <div>
+                            <a 
+                              className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" 
+                              href="https://evindia.online/" 
+                              target="_blank" 
+                              rel="noreferrer noopener" 
+                              aria-label="evIndia Web (opens in a new tab)"
+                            >
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>
+                                evIndia Web
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                  <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                                </svg>
+                              </span>
+                            </a>
+                          </div>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal text-slate-400">
+                          Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
+                        </p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
+                            <li key={tech} className="mr-1.5 mt-2">
+                              <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                {tech}
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {['Next.js', 'Tailwind CSS', 'Firebase', 'Stripe'].map((tech) => ( // Example tech stack
-                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                  </li>
 
-                {/* Project 3 - Placeholder, replace with real data */}
-                <div className="group relative grid lg:grid-cols-[1fr_2fr] gap-4 lg:gap-8 items-center">
-                  <div>
-                    <img
-                      src="https://ext.same-assets.com/1599097462/849522504.png" // Replace with actual image
-                      alt="Placeholder Project 3"
-                      className="rounded border-2 border-[#323e52] transition-all group-hover:border-[#6a9fa4] group-hover:-translate-y-1"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-medium leading-snug text-[#bcb6c9] group-hover:text-[#6a9fa4] transition-colors">
-                      <a
-                        href="#" // Replace with actual project URL
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-baseline"
-                      >
-                        Placeholder Project Three
-                        <img src="https://ext.same-assets.com/1599097462/395157150.svg" alt="" className="w-3 h-3 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </a>
-                    </h3>
-                    <p className="mt-2 text-sm leading-normal text-[#7281a4]">
-                      Description for your third project. Detail the problem it solves, the technologies used, and your role.
-                    </p>
-                    <div className="mt-2 flex items-center">
+                  {/* Project 3 */}
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      
+                      {/* Image column */}
+                      <div className="z-10 mb-2 mt-1 sm:col-span-2">
+                        <img
+                          src="https://ext.same-assets.com/1599097462/849522504.png"
+                          alt="evIndia electric vehicle searching company"
+                          className="rounded border-2 border-slate-200/10 transition-all group-hover:border-teal-300/30 group-hover:-translate-y-1 w-full"
+                        />
+                      </div>
+                      
+                      {/* Content column */}
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <div>
+                            <a 
+                              className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" 
+                              href="https://evindia.online/" 
+                              target="_blank" 
+                              rel="noreferrer noopener" 
+                              aria-label="evIndia Web (opens in a new tab)"
+                            >
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>
+                                evIndia Web
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                  <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                                </svg>
+                              </span>
+                            </a>
+                          </div>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal text-slate-400">
+                          Migrated backend systems to AWS EC2, implemented scheduled cron jobs for maintenance and backups. Managed the admin panel for dynamic content updates and user administration.
+                        </p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          {['React', 'Express', 'Spotify API', 'Heroku'].map((tech) => (
+                            <li key={tech} className="mr-1.5 mt-2">
+                              <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                {tech}
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {['Python', 'Django', 'PostgreSQL', 'Docker'].map((tech) => ( // Example tech stack
-                        <li key={tech} className="rounded-full bg-[#155d50] px-3 py-1 text-xs font-medium text-[#6a9fa4]">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                  </li>
 
+                </ul>
+              </div>
+            </section>
+            
+            {/* Worked On Section - Without Years */}
+            <section id="worked-on" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Things I've worked on">
+              <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 text-[#bcb6c9]">Worked On...</h2>
+              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+              </div>
+
+              <div>
+                <ul className="group/list">
+
+                  {/* Item 1 */}
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-8"> {/* Full width now */}
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <div>
+                            <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>
+                                5 Common Accessibility Pitfalls and How to Avoid Them
+                                5 Common Accessibility Pitfalls and How to Avoid Them
+                                5 Common Accessibility Pitfalls and How to Avoid Them 
+                                5 Common Accessibility Pitfalls and How to Avoid Them
+                              </span>
+                            </a>
+                          </div>
+                        </h3>
+                      </div>
+                    </div>
+                  </li>
+
+                  {/* Item 2 */}
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-8">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <div>
+                            <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>5 Common Accessibility Pitfalls and How to Avoid Them
+                                5 Common Accessibility Pitfalls and How to Avoid Them
+                                5 Common Accessibility Pitfalls and How to Avoid Them 
+                                5 Common Accessibility Pitfalls and How to Avoid Them
+                              </span>
+                            </a>
+                          </div>
+                        </h3>
+                      </div>
+                    </div>
+                  </li>
+
+                  {/* Item 3 */}
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-8">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <div>
+                            <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>5 Common Accessibility Pitfalls and How to Avoid Them
+                                5 Common Accessibility Pitfalls and How to Avoid Them
+                                5 Common Accessibility Pitfalls and How to Avoid Them 
+                                5 Common Accessibility Pitfalls and How to Avoid Themh
+                              </span>
+                            </a>
+                          </div>
+                        </h3>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </section>
 
