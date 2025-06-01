@@ -19,16 +19,10 @@
 
   html {
     font-family: 'Inter', sans-serif;
-    scroll-behavior: smooth; /* Keep smooth scrolling here */
-    /* Removed: cursor: none !important; */
+    scroll-behavior: smooth;
   }
 
   body {
-    /* @apply bg-background text-foreground; */
-    /* The below lines apply the same as the @apply directive if your custom properties are set correctly.
-       Keeping them explicit can sometimes help if the @apply is not processed perfectly, or for fallbacks.
-       However, if you're strictly using Tailwind's system, @apply is sufficient.
-       I'll keep them as they don't cause harm and ensure the background/text colors are applied. */
     background-color: rgb(var(--background));
     color: rgb(var(--foreground));
   }
@@ -36,6 +30,25 @@
 
 /* Components */
 @layer components {
+
+  /* Social icon styles - works for both SVG and img */
+  .social-icon {
+    @apply text-white transition-all duration-200 ease-in motion-reduce:transition-none;
+    will-change: transform;
+  }
+  
+  .social-icon:hover {
+    @apply transform -translate-y-1 text-teal-300 brightness-125;
+  }
+
+  /* Specific styles for image tags */
+  .social-icon[src] {
+    @apply filter brightness-0 invert;
+  }
+  
+  .social-icon[src]:hover {
+    @apply filter brightness-0 invert-0;
+  }
   /* Nav indicator styles */
   .nav-indicator {
     @apply mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none;
@@ -52,6 +65,16 @@
 
   .nav .active .nav-text {
     @apply text-slate-200;
+  }
+
+  /* Social icon styles - MATCHING EXPERIENCE SECTION ARROWS */
+  .social-icon {
+    @apply text-3xl text-white transition-transform duration-200 ease-in motion-reduce:transition-none;
+    transition: color 200ms ease-in;
+  }
+
+  .social-icon:hover {
+    @apply transform -translate-y-1 text-teal-300;
   }
 
   /* Selection styles */
@@ -72,42 +95,6 @@
 
 /* Utilities */
 @layer utilities {
-  /* Removed all cursor-related styles and keyframes */
-  /*
-  .cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    mix-blend-mode: difference;
-  }
-
-  .cursor-outline {
-    width: 32px;
-    height: 32px;
-    border: 2px solid white;
-    mix-blend-mode: difference;
-    transition: all 0.1s ease-out;
-  }
-
-  .cursor-dot,
-  .cursor-outline {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  .cursor-transition {
-    transition: transform 0.15s ease-out, width 0.2s ease-out, height 0.2s ease-out;
-  }
-
-  @keyframes cursorAnim2 { ... }
-  @keyframes cursorAnim3 { ... }
-  */
-
   .text-body {
     @apply text-slate-400 leading-relaxed;
     font-size: 1.0625rem; /* 17px */
@@ -122,9 +109,6 @@
     @apply font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300;
   }
 
-  /* These are redundant if already defined in :root and applied via @apply,
-     but they explicitly set the colors based on the CSS variables.
-     They don't cause issues if the variables are correctly defined. */
   .bg-background {
     background-color: rgb(var(--background));
   }
