@@ -393,7 +393,7 @@ export default function Home() {
                       {/* Image */}
                       <div className="z-10 mb-2 mt-1 sm:col-span-2">
                         <img
-                          src="https://ext.same-assets.com/1599097462/849522504.png"
+                          src="https://ext.same-assets.com/1599097462/8495204.png"
                           alt="Seafreshh Online Fish Delivery"
                           className="rounded border-2 border-slate-200/10 transition-all group-hover:border-teal-300/30 group-hover:-translate-y-1 w-full"
                         />
@@ -439,7 +439,7 @@ export default function Home() {
                       
                       <div className="z-10 mb-2 mt-1 sm:col-span-2">
                         <img
-                          src="https://ext.same-assets.com/1599097462/849522504.png"
+                          src="https://ext.same-assets.com/159909762/849522504.png"
                           alt="evIndia electric vehicle searching company"
                           className="rounded border-2 border-slate-200/10 transition-all group-hover:border-teal-300/30 group-hover:-translate-y-1 w-full"
                         />
@@ -486,7 +486,7 @@ export default function Home() {
                       
                       <div className="z-10 mb-2 mt-1 sm:col-span-2">
                         <img
-                          src="https://ext.same-assets.com/1599097462/849522504.png"
+                          src="https://ext.same-assets.com/159909762/849522504.png"
                           alt="Quotastic Quotes and Motivation app"
                           className="rounded border-2 border-slate-200/10 transition-all group-hover:border-teal-300/30 group-hover:-translate-y-1 w-full"
                         />
@@ -531,7 +531,7 @@ export default function Home() {
                       
                       <div className="z-10 mb-2 mt-1 sm:col-span-2">
                         <img
-                          src="https://ext.same-assets.com/1599097462/849522504.png"
+                          src="https://ext.same-assets.com/1599097462/49522504.png"
                           alt="Atleast Game Project"
                           className="rounded border-2 border-slate-200/10 transition-all group-hover:border-teal-300/30 group-hover:-translate-y-1 w-full"
                         />
