@@ -78,7 +78,7 @@ export default function Home() {
               <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
                 Software Engineer
               </h2>
-              <p className="mt-4 max-w-xs leading-normal">I build backend systems and UI. Currently mastering DSA and System Design for advanced software engineering roles.</p>
+              <p className="mt-4 max-w-xs leading-normal">I build backend systems. Currently mastering DSA and System Design for advanced software engineering roles.</p>
             </div>
 
             {/* Desktop Navigation */}
@@ -162,34 +162,10 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
 
             {/* About Section */}
-            <section id="about" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="About me">
-              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">About</h2>
-              </div>
-              <div className="text-body">
-                <p>
-                  I'm a <strong>backend-focused software engineer</strong> with a B.Tech in Computer Engineering, specializing in <strong>scalable systems using Node.js, Express.js, and MongoDB</strong>. I've built production-ready APIs and real-time features for platforms in domains like <strong>e-commerce, EV infrastructure, and multiplayer gaming</strong>. My strengths lie in <strong>backend architecture, cloud deployment (AWS EC2), and database optimization</strong>. I thrive in agile teams and startup environments where I can combine technical depth with business understanding. I also enhance product experiences by designing flows with <strong>Figma and Miro</strong>.
-                </p>
-                <p>
-                  With experience at{' '}
-                  <a href="https://www.ahuratechnosoft.com/" target="_blank" rel="noreferrer noopener" className="text-slate-400 hover:text-slate-200 transition">
-                    Ahura Technosoft
-                  </a>{' '}
-                  and{' '}
-                  <a href="https://www.bytestechnolab.com/" target="_blank" rel="noreferrer noopener" className="text-slate-400 hover:text-slate-200 transition">
-                    Bytes Technolabs
-                  </a>, and through my independent work on <strong>Seafreshh</strong>, I bring both <strong>reliability and entrepreneurial initiative</strong> to each project. My stack includes <strong>JavaScript, TypeScript, REST APIs, Socket.IO, MySQL</strong>, and more. I'm passionate about <strong>solving real-world challenges—especially in unorganized sectors—through thoughtful engineering</strong>. Whether I'm building from scratch or improving systems, I aim for precision, usability, and impact.
-                </p>
-                <p>
-                  Previously, I've contributed to projects such as{' '}
-                  <a href="https://evindia.online/" target="_blank" rel="noreferrer noopener" className="text-slate-400 hover:text-slate-200 transition">
-                    EV India
-                  </a>{' '}
-                  and{' '}
-                  <a href="https://quote.ahura.xyz/" target="_blank" rel="noreferrer noopener" className="text-slate-400 hover:text-slate-200 transition">
-                    Quotastic
-                  </a>.
-                </p>
+            <section id="about" className="mb-16 lg:mb-24">
+              <div className="space-y-4 text-[#7281a4] leading-relaxed">
+                <p> I’m a backend-focused developer passionate about building scalable systems and practical solutions that make a real-world impact. I’m always sharpening my skills—solving coding challenges on LeetCode, diving into system design, and exploring the fundamentals of computer science beyond just Node.js and Express. I thrive on learning, and I’m eager for opportunities where I can apply my growing knowledge to meaningful projects. </p>
+                <p> When I’m not coding, you’ll find me playing ukulele, experimenting in the kitchen, or enjoying my happiest place: working on new ideas or learning at my computer.</p>
               </div>
             </section>
 
@@ -201,12 +177,12 @@ export default function Home() {
               <div>
                 <ol className="group/list">
 
-                  {/* Freelance Work */}
+                  {/* Software Engineer */}
                   <li className="mb-12">
                     <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
                       <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="October 2024 to Present">
-                        2024 — Present
+                        Feb 2025 - current
                       </header>
                       <div className="z-10 sm:col-span-6">
                         <h3 className="font-medium leading-snug text-slate-200">
@@ -214,8 +190,9 @@ export default function Home() {
                             <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="#" target="_blank" rel="noreferrer noopener" aria-label="Freelance Developer (opens in a new tab)">
                               <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                               <span>
-                                Freelance Developer
+                                Software Engineer ·{' '}
                                 <span className="inline-block">
+                                  Aspirant
                                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
                                     <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
                                   </svg>
@@ -225,7 +202,38 @@ export default function Home() {
                           </div>
                         </h3>
                         <p className="mt-2 text-sm leading-normal">
-                          Developing backend systems for various freelance projects with frontend and backend teams. This includes working on the backend for Seafreshh (Gujarat's first marine marketplace), completing Figma UI designs, and leading client functionality gathering. Gained valuable insights and on-site experience within the marine industry beyond just technical development.
+                           Currently based in Bengaluru, actively preparing for SDE1 and backend roles by sharpening my skills in C++, Python, AWS, and system design. I’m driven to join an innovative, stable company and stay ahead of the curve by building AI-driven projects and pursuing AWS certification.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+
+                  {/* Freelance Work */}
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="October 2024 to Present">
+                        2024 — Feb 2025
+                      </header>
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <div>
+                            <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="#" target="_blank" rel="noreferrer noopener" aria-label="Freelance Developer (opens in a new tab)">
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>
+                                Freelance Developer ·{' '}
+                                <span className="inline-block">
+                                  Seafreshh
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                    <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                                  </svg>
+                                </span>
+                              </span>
+                            </a>
+                          </div>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal">
+                          Worked on a freelance project for Seafreshh, a business related to my father’s field, to help build their online presence. I gathered requirements to understand their business model, pricing, supply chain, and customer outreach. I designed a minimal phase 1 prototype in Figma and developed the backend. I also collaborated closely with a freelance frontend developer to complete the project.
                         </p>
                         <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
                           {['Node.js', 'MongoDB', 'Figma', 'Backend Development', 'Client Requirements Gathering', 'UI/UX Design', 'Process Optimization'].map((tech) => (
