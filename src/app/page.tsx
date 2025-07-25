@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('about');
+  const [showResumePreview, setShowResumePreview] = useState(false);
   const sectionsRef = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
@@ -369,9 +370,15 @@ export default function Home() {
                   </li>
                     
                 </ol>
-                <div className="mt-12">
+                <div className="mt-12 flex flex-col gap-4">
                   {/* Resume link */}
-                  <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 font-semibold text-slate-200 group/link text-base" href="/resume/Dipang_Resume.pdf" target="_blank" rel="noreferrer noopener" aria-label="View Full Résumé (opens in a new tab)">
+                  <a
+                    className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 font-semibold text-slate-200 group/link text-base"
+                    href="/resume/Dipang_Resume.pdf"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label="View Full Résumé (opens in a new tab)"
+                  >
                     <span>
                       View Full{' '}
                       <span className="inline-block">
@@ -382,6 +389,21 @@ export default function Home() {
                       </span>
                     </span>
                   </a>
+                  <button
+                    className="inline-flex items-center px-4 py-2 bg-teal-700 text-white rounded hover:bg-teal-600 transition-colors w-max"
+                    onClick={() => setShowResumePreview((prev) => !prev)}
+                  >
+                    {showResumePreview ? 'Hide Resume Preview' : 'Preview Resume'}
+                  </button>
+                  {showResumePreview && (
+                    <div className="w-full max-w-2xl border border-slate-700 rounded shadow-lg overflow-hidden">
+                      <iframe
+                        src="/resume/Dipang_Resume.pdf"
+                        title="Resume Preview"
+                        className="w-full h-[600px]"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </section>
