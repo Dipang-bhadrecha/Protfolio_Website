@@ -139,7 +139,7 @@ export default function Home() {
             {[
               { href: 'https://github.com/Dipang-bhadrecha/', icon: <FaGithub />, label: 'GitHub' },
               { href: 'https://www.linkedin.com/in/dipang/', icon: <FaLinkedin />, label: 'LinkedIn' },
-              { href: 'https://leetcode.com/', icon: <SiLeetcode />, label: 'LeetCode' },
+              { href: 'https://leetcode.com/u/user4485LY/', icon: <SiLeetcode />, label: 'LeetCode' },
               { href: 'https://www.hackerrank.com/profile/dipaang_bhadrec1', icon: <SiHackerrank />, label: 'HackerRank' },
             ].map((social) => (
               <li key={social.label}>
