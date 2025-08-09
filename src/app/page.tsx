@@ -166,7 +166,7 @@ export default function Home() {
             <section id="about" className="mb-16 lg:mb-24">
               <div className="space-y-4 text-[#7281a4] leading-relaxed">
                 <p> I’m a backend-focused developer passionate about building scalable systems and practical solutions that make a real-world impact. I’m always sharpening my skills—solving coding challenges on LeetCode, diving into system design, and exploring the fundamentals of computer science beyond just Node.js and Express. I thrive on learning, and I’m eager for opportunities where I can apply my growing knowledge to meaningful projects. </p>
-                <p> When I’m not coding, you’ll find me playing ukulele, experimenting in the kitchen, or enjoying my happiest place: working on new ideas or learning at my computer.</p>
+                {/* <p> When I’m not coding, you’ll find me playing ukulele, experimenting in the kitchen, or enjoying my happiest place: working on new ideas or learning at my computer.</p> */}
               </div>
             </section>
 
@@ -509,7 +509,7 @@ export default function Home() {
                     </div>
                   </li>
 
-                  {/* Project: Quotastic */}
+                  {/* Project: Quotastic
                   <li className="mb-12">
                     <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
@@ -552,7 +552,7 @@ export default function Home() {
                         </ul>
                       </div>
                     </div>
-                  </li>
+                  </li> */}
 
                   {/* Project: Atleast (Game Project) */}
                   <li className="mb-12">
