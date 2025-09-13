@@ -389,7 +389,7 @@ export default function Home() {
                       </span>
                     </span>
                   </a>
-                  {/* <button
+                  <button
                     className="inline-flex items-center px-4 py-2 bg-teal-700 text-white rounded hover:bg-teal-600 transition-colors w-max"
                     onClick={() => setShowResumePreview((prev) => !prev)}
                   >
@@ -403,7 +403,7 @@ export default function Home() {
                         className="w-full h-[600px]"
                       />
                     </div>
-                  )} */}
+                  )}
                 </div>
               </div>
             </section>
