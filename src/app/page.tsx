@@ -86,7 +86,7 @@ export default function Home() {
             <nav className="nav hidden lg:block" aria-label="In-page jump links">
               <ul className="mt-16 w-max">
                 {[
-                  { id: 'about', label: 'About' },
+                  // { id: 'about', label: 'About' },
                   { id: 'experience', label: 'Experience' },
                   { id: 'projects', label: 'Projects' },
                   { id: 'worked-on', label: 'Worked On...' },
@@ -166,7 +166,7 @@ export default function Home() {
             <section id="about" className="mb-16 lg:mb-24">
               <div className="space-y-4 text-[#7281a4] leading-relaxed">
                 {/* <p> I’m a backend-focused developer passionate about building scalable systems and practical solutions that make a real-world impact. I’m always sharpening my skills—solving coding challenges on LeetCode, diving into system design, and exploring the fundamentals of computer science beyond just Node.js and Express. I thrive on learning, and I’m eager for opportunities where I can apply my growing knowledge to meaningful projects. </p> */}
-                <p> Does the About section really matter? Projects and skills tell the story better than words ever could. </p>
+                {/* <p> Does the About section really matter? Projects and skills tell the story better than words ever could. </p> */}
               </div>
             </section>
 
@@ -178,7 +178,7 @@ export default function Home() {
               <div>
                 <ol className="group/list">
 
-                  {/* Software Engineer - Aspirant */}
+                  {/* Software Engineer - Looking for.. */}
                   <li className="mb-12">
                     <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
@@ -193,7 +193,7 @@ export default function Home() {
                               <span>
                                 Software Engineer ·{' '}
                                 <span className="inline-block">
-                                  Aspirant
+                                  Looking for opportunities..
                                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
                                     <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
                                   </svg>
@@ -374,7 +374,7 @@ export default function Home() {
                   {/* Resume link */}
                   <a
                     className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 font-semibold text-slate-200 group/link text-base"
-                    href="/resume/Dipang_Resume.pdf"
+                    href="/resume/Dipang_resume.pdf"
                     target="_blank"
                     rel="noreferrer noopener"
                     aria-label="View Full Résumé (opens in a new tab)"
@@ -398,7 +398,7 @@ export default function Home() {
                   {showResumePreview && (
                     <div className="w-full max-w-2xl border border-slate-700 rounded shadow-lg overflow-hidden">
                       <iframe
-                        src="/resume/Dipang_Resume.pdf"
+                        src="/resume/Dipang_resume.pdf"
                         title="Resume Preview"
                         className="w-full h-[600px]"
                       />
@@ -414,6 +414,53 @@ export default function Home() {
               <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"></div>
               <div>
                 <ul className="group/list">
+
+                  {/* Project: PromptLearn */}
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      
+                      {/* Image */}
+                      <div className="z-10 mb-2 mt-1 sm:col-span-2">
+                        <img
+                          src="assets/promptlearn.png"
+                          alt="PromptLearn"
+                          className="rounded border-2 border-slate-200/10 transition-all group-hover:border-teal-300/30 group-hover:-translate-y-1 w-full"
+                        />
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <Link 
+                            className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" 
+                            href="https://prompt-learn.vercel.app/" 
+                            aria-label="PromptLearn"
+                          >
+                            <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                            <span>
+                              PromptLearn
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true">
+                                <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd"></path>
+                              </svg>
+                            </span>
+                          </Link>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal text-slate-400">
+                          PromptLearn is an interactive AI mind mapping tool designed to help you organize and visualize your AI prompts and responses. It's built with a clean, dark-themed interface, offering a digital canvas where you can create, connect, and manage prompts in a hierarchical tree structure. With features like zooming, panning, and multi-node selection, it makes organizing complex AI workflows intuitive and efficient. This tool is perfect for AI prompt engineers, researchers, and developers who want a visual way to manage their prompt engineering projects and AI conversation trees.
+                        </p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          {['React', 'Next.js', 'Tailwind CSS', 'Google cloud console', 'gemini API', 'Generative model'].map((tech) => (
+                            <li key={tech} className="mr-1.5 mt-2">
+                              <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                {tech}
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
 
                   {/* Project: Seafreshh */}
                   <li className="mb-12">
@@ -509,7 +556,7 @@ export default function Home() {
                     </div>
                   </li>
 
-                  {/* Project: Quotastic
+                  {/* Project: Quotastic */}
                   <li className="mb-12">
                     <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
@@ -552,7 +599,7 @@ export default function Home() {
                         </ul>
                       </div>
                     </div>
-                  </li> */}
+                  </li> 
 
                   {/* Project: Atleast (Game Project) */}
                   <li className="mb-12">
