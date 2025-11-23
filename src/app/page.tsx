@@ -70,54 +70,43 @@ export default function Home() {
         {/* Sidebar Navigation - Fixed on large screens, takes half width */}
         <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
           <div>
-            {/* <div>
+            <div>
               <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
                 <Link href="/" className="hover:text-[#6a9fa4] transition-colors whitespace-nowrap">
                   Dipang Bhadrecha
                 </Link>
               </h1>
+
               <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
                 Software Engineer
               </h2>
-              <p className="mt-4 max-w-xs leading-normal">Hi, I’m Dipang — a software engineer who loves building things that solve real problems, whether they come from personal frustration or the world around me. I enjoy the process of developing ideas into something real — it’s what keeps me glued to my laptop for hours. I don’t like limiting myself to any single tech stack; for me, it’s all about solving problems through code. Lately, I’ve been deeply fascinated by AI and currently focused on building my project, PromptLearn.</p>
-            </div> */}
-            <div>
-  <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
-    <Link href="/" className="hover:text-[#6a9fa4] transition-colors whitespace-nowrap">
-      Dipang Bhadrecha
-    </Link>
-  </h1>
 
-  <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
-    Software Engineer
-  </h2>
-
-  {/* About Me Box */}
-  <div
-    className="
+              {/* About Me Box */}
+              <div
+                className="
       mt-6 max-w-md rounded-2xl border border-slate-800/70
       bg-slate-900/60 p-5 sm:p-6 shadow-md
       hover:border-teal-700 hover:bg-slate-900/80
       transition duration-300
     "
-  >
-    <p className="text-sm sm:text-base leading-relaxed text-slate-300">
-      Hi, I’m Dipang — a software engineer who loves building things that solve real problems, whether they come
-      from personal frustration or the world around me. I enjoy the process of developing ideas into something real —
-      it’s what keeps me glued to my laptop for hours. I don’t like limiting myself to any single tech stack; for me,
-      it’s all about solving problems through code. Lately, I’ve been deeply fascinated by AI and currently focused
-      on building my project,&nbsp;
-      <a
-        href="https://prompt-learn.vercel.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-teal-400 font-medium hover:underline underline-offset-4 hover:text-teal-300 transition-colors"
-      >
-        PromptLearn
-      </a>.
-    </p>
-  </div>
-</div>
+              >
+                <p className="text-sm sm:text-base leading-relaxed text-slate-300">
+                  Hi, I’m Dipang — a software engineer who builds things that solve real problems, whether they come
+                  from personal frustration or the world around me. I enjoy the process of developing ideas into something real —
+                  it’s what keeps me glued to my laptop for hours. I don’t like limiting myself to any single tech stack; for me,
+                  it’s all about solving problems through code. Lately, I’ve been deeply fascinated by AI and currently focused
+                  on building my project,&nbsp;
+                  <a
+                    href="https://prompt-learn.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-teal-400 font-medium hover:underline underline-offset-4 hover:text-teal-300 transition-colors"
+                  >
+                    PromptLearn
+                  </a>.
+                </p>
+              </div>
+            </div>
 
 
             {/* Desktop Navigation */}
@@ -154,10 +143,8 @@ export default function Home() {
             <nav className="mb-6 lg:hidden">
               <ul className="flex space-x-10 overflow-x-auto p-4 sm:p-6 md:p-8 lg:p-0">
                 {[
-                  { id: 'about', label: 'About' },
                   { id: 'experience', label: 'Experience' },
                   { id: 'projects', label: 'Projects' },
-                  { id: 'worked-on', label: 'Worked On...' },
                 ].map((item) => (
                   <li key={item.id}>
                     <button
